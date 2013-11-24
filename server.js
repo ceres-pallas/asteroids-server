@@ -11,6 +11,17 @@ app.get('/', function(request, response){
     response.redirect('/start/');
 });
 
+server.listen(app.get('port'));
+console.log('Asteroids server started listening on port ' + app.get('port'));
+
+var Game = require('asteroids-game');
+
+var options = require('./options');
+var game = new Game(options);
+for (var index = 0; index < options.asteroidCount; index++) {
+    game.addAsteroid();
+}
+
 var viewers = {};
 
 io.sockets.on('connection', function(socket){
@@ -27,5 +38,11 @@ io.sockets.on('connection', function(socket){
     });
 });
 
-server.listen(app.get('port'));
-console.log('Asteroids server started listening on port ' + app.get('port'));
+setInterval(function(){
+    console.log('tick');
+    game.tick();
+    var state = game.state();
+    for (var id in viewers) {
+	viewers[id].emit('game-state', state)
+    }
+}, 1000);
