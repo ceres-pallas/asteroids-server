@@ -6,7 +6,7 @@
 	}
     }
     var actions = {
-	'view': function(){ /* do nothing */},
+	'view': follow('/view'),
 	'control': follow('/control')
     }
     for (var id in actions){

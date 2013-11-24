@@ -6,6 +6,7 @@ var io = require('socket.io').listen(server);
 app.set('port', process.env.PORT || 3435);
 app.use('/start', express.static(__dirname + '/landing'));
 app.use('/control', express.static(__dirname + '/control'));
+app.use('/view', express.static(__dirname + '/view'));
 app.get('/', function(request, response){
     response.redirect('/start/');
 });
