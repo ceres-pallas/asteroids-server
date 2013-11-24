@@ -32,6 +32,10 @@ io.sockets.on('connection', function(socket){
 	viewers[socket.id] = socket;
     })
 
+    socket.on('control-event', function(data){
+	console.log(data);
+    });
+
     socket.on('disconnect', function(){
 	console.log('socket %s left the game', socket.id);
 	delete viewers[socket.id];
