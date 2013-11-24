@@ -18,5 +18,8 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ceres-pallas/asteroids-server/issues"
+  },
+  "devDependencies": {
+    "nodemon": "~0.7.10"
   }
 }
