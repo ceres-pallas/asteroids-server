@@ -15,6 +15,7 @@ server.listen(app.get('port'));
 console.log('Asteroids server started listening on port ' + app.get('port'));
 
 var Game = require('asteroids-game');
+var Asteroids = require('asteroids-game');
 
 var options = require('./options');
 var game = new Game(options);
@@ -30,6 +31,11 @@ io.sockets.on('connection', function(socket){
     socket.on('viewer', function(){
 	console.log('socket %s is a viewer', socket.id);
 	viewers[socket.id] = socket;
+    })
+
+    socket.on('control', function(){
+	var fighter = new Asteroids(options.asteroidInitializer);
+	game.addFighter(fighter);
     })
 
     socket.on('control-event', function(data){
