@@ -1,0 +1,22 @@
+{
+  "name": "asteroids-server",
+  "version": "0.0.0",
+  "description": "A server to serve the asteroids game",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ceres-pallas/asteroids-server.git"
+  },
+  "keywords": [
+    "asteroids",
+    "server"
+  ],
+  "author": "Daan van Berkel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ceres-pallas/asteroids-server/issues"
+  }
+}
