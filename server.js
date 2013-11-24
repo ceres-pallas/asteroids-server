@@ -4,6 +4,7 @@ var server = require('http').createServer(app);
 
 app.set('port', process.env.PORT || 3435);
 app.use('/start', express.static(__dirname + '/landing'));
+app.use('/control', express.static(__dirname + '/control'));
 app.get('/', function(request, response){
     response.redirect('/start/');
 });
