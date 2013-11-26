@@ -22,6 +22,7 @@
     "tests"
   ],
   "dependencies": {
-    "asteroids-overview": "*"
+    "asteroids-overview": "*",
+    "asteroids-landing": "~0.0.0"
   }
 }
