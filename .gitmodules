@@ -1,3 +1,0 @@
-[submodule "view"]
-	path = view
-	url = git@github.com:ceres-pallas/asteroids-overview.git
