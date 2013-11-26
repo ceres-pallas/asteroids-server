@@ -20,5 +20,8 @@
     ".",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "asteroids-overview": "*"
+  }
 }
