@@ -4,11 +4,9 @@ var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 
 app.set('port', process.env.PORT || 3435);
-app.use('/start', express.static(__dirname + '/asteroids-landing'));
-app.use('/control', express.static(__dirname + '/asteroids-control'));
-app.use('/view', express.static(__dirname + '/asteroids-overview'));
+app.use('/controlpanel', express.static(__dirname + '/asteroids-controlpanel'));
 app.get('/', function(request, response){
-    response.redirect('/start/');
+    response.redirect('/controlpanel/');
 });
 
 server.listen(app.get('port'));
@@ -32,16 +30,6 @@ io.sockets.on('connection', function(socket){
 	console.log('socket %s is a viewer', socket.id);
 	viewers[socket.id] = socket;
     })
-
-    socket.on('control', function(){
-	var fighter = new Asteroids(options.asteroidInitializer);
-	console.log(fighter);
-	game.addFighter(fighter);
-    })
-
-    socket.on('control-event', function(data){
-	console.log(data);
-    });
 
     socket.on('disconnect', function(){
 	console.log('socket %s left the game', socket.id);
