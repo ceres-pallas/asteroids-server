@@ -17,6 +17,7 @@ var Asteroids = require('asteroids-asteroid');
 
 var options = require('./options');
 var game = new Game(options);
+game.addFighter(new Asteroids());
 for (var index = 0; index < options.asteroidCount; index++) {
     game.addAsteroid();
 }
