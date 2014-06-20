@@ -37,7 +37,8 @@
 	    save();
 	    strokeStyle = 'white';
 	    fillStyle = 'white';
-	    rotate(Math.PI/2 + fighter.orientation);
+	    translate(fighter.x, fighter.y);
+	    rotate(fighter.orientation);
 	    beginPath();
 	    moveTo(fighter.radius, 0);
 	    lineTo(fighter.radius * mx, fighter.radius * my);
@@ -47,7 +48,7 @@
 	    stroke();
 	    if (debug) {
 		beginPath();
-		arc(fighter.x, fighter.y, fighter.radius, 0, 2 * Math.PI);
+		arc(0, 0, fighter.radius, 0, 2 * Math.PI);
 		closePath();
 		stroke();
 	    }

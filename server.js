@@ -18,7 +18,9 @@ var Asteroids = require('asteroids-asteroid');
 var options = require('./options');
 var game = new Game(options);
 game.addFighter(new Asteroids(function(fighter){
-    fighter.radius(100);
+    fighter.position({ 'x': 50, 'y': 100 });
+    fighter.radius(10);
+    fighter.velocity({ 'speed': '0.5', 'heading': Math.PI/12 });
     fighter.orientation(Math.PI/12);
 }));
 for (var index = 0; index < options.asteroidCount; index++) {
