@@ -14,10 +14,11 @@ console.log('Asteroids server started listening on port ' + app.get('port'));
 
 var Game = require('asteroids-game');
 var Asteroids = require('asteroids-asteroid');
+var Fighter = require('asteroids-fighter');
 
 var options = require('./options');
 var game = new Game(options);
-game.addFighter(new Asteroids(function(fighter){
+game.addFighter(new Fighter(function(fighter){
     fighter.position({ 'x': 50, 'y': 100 });
     fighter.radius(10);
     fighter.velocity({ 'speed': '0.5', 'heading': Math.PI/12 });
