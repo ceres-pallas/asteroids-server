@@ -18,12 +18,7 @@ var Fighter = require('asteroids-fighter');
 
 var options = require('./options');
 var game = new Game(options);
-game.addFighter(new Fighter(function(fighter){
-    fighter.position({ 'x': 50, 'y': 100 });
-    fighter.radius(10);
-    fighter.velocity({ 'speed': '0.5', 'heading': Math.PI/12 });
-    fighter.orientation(Math.PI/12);
-}));
+game.addFighter(new Fighter(options.fighterInitializer));
 for (var index = 0; index < options.asteroidCount; index++) {
     game.addAsteroid();
 }
