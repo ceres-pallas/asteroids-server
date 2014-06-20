@@ -12,12 +12,19 @@
     }
     Top.prototype.update = function(state){
 	this.drawBackground();
-	this.drawFighters(state.fighters);
+	this.drawEntities(state);
     }
     Top.prototype.drawBackground = function(){
 	this.context.save();
 	this.context.fillStyle = 'black';
 	this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
+	this.context.restore();
+    }
+    Top.prototype.drawEntities = function(state){
+	this.context.save();
+	this.context.translate(this.canvas.width/2, this.canvas.height/2);
+	this.context.scale(1, -1);
+	this.drawFighters(state.fighters);
 	this.context.restore();
     }
     Top.prototype.drawFighters = function(fighters){
@@ -29,10 +36,7 @@
 	this.context.save();
 	this.context.strokeStyle = 'white';
 	this.context.fillStyle = 'white';
-	this.context.translate(this.canvas.width/2, this.canvas.height/2);
-	this.context.scale(1, -1);
-	this.context.rotate(Math.PI/2);
-	this.context.rotate(fighter.orientation);
+	this.context.rotate(Math.PI/2 + fighter.orientation);
 	this.context.beginPath();
 	this.context.moveTo(fighter.radius, 0);
 	this.context.lineTo(fighter.radius * mx, fighter.radius * my);
