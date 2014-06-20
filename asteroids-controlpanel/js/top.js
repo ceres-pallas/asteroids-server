@@ -1,7 +1,7 @@
 (function($){
     var debug = true;
 
-    var alpha = 2 * Math.PI / 3;
+    var alpha = 9 * Math.PI / 12;
     var mx = Math.cos(alpha);
     var my = Math.sin(alpha);
 
