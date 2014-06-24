@@ -23,7 +23,7 @@
     "nodemon": "~0.7.10"
   },
   "dependencies": {
-    "asteroids-asteroid": "~0.3.0",
+    "asteroids-asteroid": "0.4.0",
     "asteroids-fighter": "^0.2.0",
     "asteroids-game": "0.1.0",
     "express": "~3.4.4",
