@@ -25,6 +25,7 @@
 	this.context.translate(this.canvas.width/2, this.canvas.height/2);
 	this.context.scale(1, -1);
 	this.drawFighters(state.fighters);
+	this.drawAsteroids(state.asteroids);
 	this.context.restore();
     }
     Top.prototype.drawFighters = function(fighters){
@@ -49,6 +50,33 @@
 	    if (debug) {
 		beginPath();
 		arc(0, 0, fighter.radius, 0, 2 * Math.PI);
+		closePath();
+		stroke();
+	    }
+	    this.context.restore();
+	}
+    }
+    Top.prototype.drawAsteroids = function(asteroids){
+	asteroids.forEach(function(asteroid){
+	    this.drawAsteroid(asteroid);
+	}.bind(this));
+    }
+    Top.prototype.drawAsteroid = function(asteroid){
+	with(this.context) {
+	    save();
+	    strokeStyle = 'white';
+	    fillStyle = 'white';
+	    translate(asteroid.x, asteroid.y);
+	    rotate(asteroid.orientation);
+	    beginPath();
+	    moveTo(asteroid.radius, 0);
+	    lineTo(asteroid.radius * mx, asteroid.radius * my);
+	    lineTo(asteroid.radius * mx, -asteroid.radius * my);
+	    closePath();
+	    stroke();
+	    if (debug) {
+		beginPath();
+		arc(0, 0, asteroid.radius, 0, 2 * Math.PI);
 		closePath();
 		stroke();
 	    }
