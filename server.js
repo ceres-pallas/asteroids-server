@@ -42,7 +42,6 @@ io.sockets.on('connection', function(socket){
 });
 
 setInterval(function(){
-    console.log('tick');
     game.tick();
     var state = game.state();
     for (var id in viewers) {
