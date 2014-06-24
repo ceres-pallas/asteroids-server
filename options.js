@@ -16,7 +16,7 @@ module.exports = {
     },
     asteroidInitializer: function(asteroid){
         asteroid.position({ 'x': width * Math.random(), 'y': height * Math.random() });
-		asteroid.radius(15);
+		asteroid.radius(12 + 6 * Math.random());
         asteroid.velocity({ 'speed': '3', 'heading': 2*Math.PI * Math.random() });
     },
     asteroidCount: 10
