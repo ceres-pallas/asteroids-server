@@ -31,13 +31,13 @@ io.sockets.on('connection', function(socket){
     console.log('socket %s connected', socket.id);
 
     socket.on('viewer', function(){
-	console.log('socket %s is a viewer', socket.id);
-	viewers[socket.id] = socket;
+    console.log('socket %s is a viewer', socket.id);
+        viewers[socket.id] = socket;
     })
 
     socket.on('disconnect', function(){
-	console.log('socket %s left the game', socket.id);
-	delete viewers[socket.id];
+    console.log('socket %s left the game', socket.id);
+        delete viewers[socket.id];
     });
 });
 
@@ -45,6 +45,6 @@ setInterval(function(){
     game.tick();
     var state = game.state();
     for (var id in viewers) {
-	viewers[id].emit('game-state', state)
+        viewers[id].emit('game-state', state)
     }
 }, 1000/60);
