@@ -24,8 +24,8 @@
   },
   "dependencies": {
     "asteroids-asteroid": "0.4.0",
-    "asteroids-fighter": "^0.2.0",
-    "asteroids-game": "0.1.0",
+    "asteroids-fighter": "^0.3.2",
+    "asteroids-game": "0.2.0",
     "express": "~3.4.4",
     "socket.io": "~0.9.16"
   }
