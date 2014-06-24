@@ -5,6 +5,9 @@
     var mx = Math.cos(alpha);
     var my = Math.sin(alpha);
 
+    var ridges = [1.0, 1.1, 0.9, 0.9, 1.0, 1.2, 0.8, 1.1, 0.9, 1.2, 1.1, 1.0];
+    var ridgeAngle = 2 * Math.PI / ridges.length;
+
     var Top = $.Top = function(canvas){
 	this.canvas = canvas;
 	this.context = canvas.getContext('2d');
@@ -69,9 +72,14 @@
 	    translate(asteroid.x, asteroid.y);
 	    rotate(asteroid.orientation);
 	    beginPath();
-	    moveTo(asteroid.radius, 0);
-	    lineTo(asteroid.radius * mx, asteroid.radius * my);
-	    lineTo(asteroid.radius * mx, -asteroid.radius * my);
+	    moveTo(asteroid.radius * ridges[0], 0);
+	    for (var index = 1; index < ridges.length; index++) {
+		var r = asteroid.radius * ridges[index];
+		lineTo(
+		    r * Math.cos(index * ridgeAngle),
+		    r * Math.sin(index * ridgeAngle)
+		);
+	    }
 	    closePath();
 	    stroke();
 	    if (debug) {
