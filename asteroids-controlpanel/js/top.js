@@ -25,7 +25,7 @@
     }
     Top.prototype.drawEntities = function(state){
 	this.context.save();
-	this.context.translate(this.canvas.width/2, this.canvas.height/2);
+	this.context.translate(0, this.canvas.height);
 	this.context.scale(1, -1);
 	this.drawFighters(state.fighters);
 	this.drawAsteroids(state.asteroids);
