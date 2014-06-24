@@ -11,7 +11,7 @@
     var Top = $.Top = function(canvas){
         this.canvas = canvas;
         this.context = canvas.getContext('2d');
-        this.update({ fighters: [], asteroids: [] });
+        this.update({ fighters: [], asteroids: [], bullets: [] });
     }
     Top.prototype.update = function(state){
         this.drawBackground();
@@ -29,6 +29,7 @@
         this.context.scale(1, -1);
         this.drawFighters(state.fighters);
         this.drawAsteroids(state.asteroids);
+        this.drawBullets(state.bullets);
         this.context.restore();
     }
     Top.prototype.drawFighters = function(fighters){
@@ -88,6 +89,24 @@
                 closePath();
                 stroke();
             }
+            this.context.restore();
+        }
+    }
+    Top.prototype.drawBullets = function(bullets){
+        bullets.forEach(function(bullet){
+            this.drawBullet(bullet);
+        }.bind(this));
+    }
+    Top.prototype.drawBullet = function(bullet){
+        with(this.context) {
+            save();
+            strokeStyle = 'white';
+            fillStyle = 'white';
+            translate(bullet.x, bullet.y);
+            beginPath();
+            arc(0, 0, bullet.radius, 0, 2 * Math.PI);
+			fill();
+            closePath();
             this.context.restore();
         }
     }
