@@ -1,5 +1,5 @@
-var width = 640;
-var height = 480;
+var width = 720;
+var height = 720;
 
 module.exports = {
     width: width,
