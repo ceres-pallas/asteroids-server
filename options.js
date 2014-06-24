@@ -4,6 +4,10 @@ var height = 720;
 module.exports = {
     width: width,
     height: height,
+	bullet: {
+		radius: 1,
+		speed: 10
+	},
     fighterInitializer: function(fighter){
         fighter.position({ 'x': 50, 'y': 100 });
         fighter.radius(10);
