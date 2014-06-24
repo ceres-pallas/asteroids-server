@@ -46,4 +46,4 @@ setInterval(function(){
     for (var id in viewers) {
 	viewers[id].emit('game-state', state)
     }
-}, 1000);
+}, 1000/60);
