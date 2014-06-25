@@ -25,7 +25,7 @@
   "dependencies": {
     "asteroids-asteroid": "0.6.0",
     "asteroids-fighter": "^0.5.0",
-    "asteroids-game": "0.5.0",
+    "asteroids-game": "0.5.1",
     "express": "~3.4.4",
     "socket.io": "~0.9.16"
   }
