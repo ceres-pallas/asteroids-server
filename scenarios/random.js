@@ -4,10 +4,10 @@ var height = 720;
 module.exports = {
     width: width,
     height: height,
-	bullet: {
-		radius: 2,
-		speed: 8
-	},
+    bullet: {
+        radius: 2,
+        speed: 8
+    },
     fighterInitializer: function(fighter){
         fighter.position({ 'x': 50, 'y': 100 });
         fighter.radius(10);
@@ -16,7 +16,7 @@ module.exports = {
     },
     asteroidInitializer: function(asteroid){
         asteroid.position({ 'x': width * Math.random(), 'y': height * Math.random() });
-		asteroid.radius(12 + 6 * Math.random());
+        asteroid.radius(12 + 6 * Math.random());
         asteroid.velocity({ 'speed': '3', 'heading': 2*Math.PI * Math.random(), omega: Math.PI/100 * (1 + 2 * Math.random()) });
     },
     asteroidCount: 10
