@@ -36,6 +36,7 @@ io.sockets.on('connection', function(socket){
     socket.on('viewer', function(){
     console.log('socket %s is a viewer', socket.id);
         viewers[socket.id] = socket;
+        socket.emit('instructions', options.mission.instructions)
     })
 
     socket.on('disconnect', function(){
