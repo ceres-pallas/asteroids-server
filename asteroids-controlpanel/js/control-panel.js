@@ -5,6 +5,7 @@
 
     var vision = new Vision(document.getElementById('vision'));
     var top = new Top(document.getElementById('top'));
+	var mission = new Mission(document.getElementById('mission'));
 
     socket.on('game-state', function(data) {
         vision.update(data);
