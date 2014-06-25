@@ -19,5 +19,8 @@ module.exports = {
         asteroid.radius(100);
         asteroid.velocity({ 'speed': 0, 'heading': 0, 'omega': Math.PI/100 });
     },
-    asteroidCount: 1
+    asteroidCount: 1,
+    mission: {
+        'instruction': 'Shoot the looming asteroid before it can do any harm.'
+    }
 }
