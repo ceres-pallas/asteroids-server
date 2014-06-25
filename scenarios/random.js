@@ -19,5 +19,8 @@ module.exports = {
         asteroid.radius(12 + 6 * Math.random());
         asteroid.velocity({ 'speed': '3', 'heading': 2*Math.PI * Math.random(), omega: Math.PI/100 * (1 + 2 * Math.random()) });
     },
-    asteroidCount: 10
+    asteroidCount: 10,
+    mission: {
+        'instructions': 'Have fun!'
+    }
 }

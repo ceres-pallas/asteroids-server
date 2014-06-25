@@ -21,6 +21,6 @@ module.exports = {
     },
     asteroidCount: 1,
     mission: {
-        'instruction': 'Shoot the looming asteroid before it can do any harm.'
+        'instructions': 'Shoot the looming asteroid before it can do any harm.'
     }
 }
