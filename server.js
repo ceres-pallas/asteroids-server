@@ -1,3 +1,4 @@
+var path = require('path');
 var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
@@ -16,7 +17,9 @@ var Game = require('asteroids-game');
 var Asteroids = require('asteroids-asteroid');
 var Fighter = require('asteroids-fighter');
 
-var options = require('./options');
+var scenario = path.join(__dirname, 'scenarios', process.argv[2] || 'intro');
+
+var options = require(scenario);
 var game = new Game(options);
 var fighter = new Fighter(options.fighterInitializer);
 game.addFighter(fighter);
