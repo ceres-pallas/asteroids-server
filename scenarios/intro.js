@@ -6,7 +6,8 @@ module.exports = {
     height: height,
     bullet: {
         radius: 2,
-        speed: 8
+        speed: 8,
+        ttl: 80
     },
     fighterInitializer: function(fighter){
         fighter.position({ 'x': width/2, 'y': 100 });
