@@ -1,4 +1,4 @@
-(function(io, Vision){
+(function(io, CodeMirror, Vision, Top, Instructions){
    var socket = io.connect(window.location.origin);
 
     socket.emit('viewer', {});
@@ -22,4 +22,4 @@
     socket.on('instructions', function(data){
         instructions.update(data);
     })
-})(io, Vision);
+})(io, CodeMirror, Vision, Top, Instructions);
