@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Control Panel</title>
+    <link rel="stylesheet" href="components/codemirror/lib/codemirror.css" />
   </head>
   <body>
     <section>
@@ -13,7 +14,12 @@
     <section>
       <p id="instructions"></p>
     </section>
+    <section>
+      <textarea id="code"></textarea>
+    </section>
     <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="./components/codemirror/lib/codemirror.js"></script>
+    <script type="text/javascript" src="./components/codemirror/mode/javascript/javascript.js"></script>
     <script type="text/javascript" src="./js/vision.js"></script>
     <script type="text/javascript" src="./js/top.js"></script>
     <script type="text/javascript" src="./js/mission.js"></script>

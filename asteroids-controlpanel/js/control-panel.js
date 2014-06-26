@@ -7,6 +7,13 @@
     var top = new Top(document.getElementById('top'));
     var instructions = new Instructions(document.getElementById('instructions'));
 
+	var textArea = document.getElementById('code');
+	textArea.textContent = '/* Insert your code here */'
+	var editor = CodeMirror.fromTextArea(code, {
+		mode: 'javascript',
+		lineNumbers: true
+	});
+
     socket.on('game-state', function(data) {
         vision.update(data);
         top.update(data);
