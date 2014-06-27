@@ -37,7 +37,11 @@ io.sockets.on('connection', function(socket){
     console.log('socket %s is a viewer', socket.id);
         viewers[socket.id] = socket;
         socket.emit('instructions', options.mission.instructions)
-    })
+    });
+
+	socket.on('code-change', function(data){
+	console.log(data);
+	});
 
     socket.on('disconnect', function(){
     console.log('socket %s left the game', socket.id);
