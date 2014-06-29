@@ -70,4 +70,7 @@ setInterval(function(){
     for (var id in viewers) {
         viewers[id].emit('game-state', state)
     }
+	if (options.repeating && state.asteroids.length === 0) {
+		intializeGame();
+	}
 }, 1000/60);
