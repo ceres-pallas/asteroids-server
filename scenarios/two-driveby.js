@@ -24,6 +24,6 @@ module.exports = {
     },
     asteroidCount: 1,
     mission: {
-        'instructions': 'Shoot the looming asteroid before it can do any harm.'
+        'instructions': 'This one is a bit smaller. Try using less bullets this time, mister big spender. How about 1. You should be able to learn the agent to fire at the right time.'
     }
 }
