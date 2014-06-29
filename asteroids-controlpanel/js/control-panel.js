@@ -40,13 +40,13 @@
 
 	var codeStatus = document.getElementById('code-status');
     socket.on('compile error', function(data){
-		codeStatus.style = 'background:red;';
+		codeStatus.style.background = 'red';
     });
     socket.on('runtime error', function(data){
-		codeStatus.style = 'background:yellow;';
+		codeStatus.style.background = 'yellow';
     });
     socket.on('compiled', function(data){
-		codeStatus.style = 'background:green;';
+		codeStatus.style.background = 'green';
     });
 
 })(localStorage || {}, io, CodeMirror, Vision, Top, Instructions);
