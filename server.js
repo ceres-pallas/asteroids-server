@@ -23,7 +23,6 @@ var options = require(scenario);
 var game = new Game(options);
 var fighter = new Fighter(options.fighterInitializer);
 game.addFighter(fighter);
-fighter.fire();
 for (var index = 0; index < options.asteroidCount; index++) {
     game.addAsteroid();
 }
