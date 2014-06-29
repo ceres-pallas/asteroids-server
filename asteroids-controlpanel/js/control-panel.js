@@ -34,16 +34,15 @@
         instructions.update(data);
     });
 
+	var codeStatus = document.getElementById('code-status');
     socket.on('compile error', function(data){
-		console.log('compile error');
+		codeStatus.style = 'background:red;';
     });
-
     socket.on('runtime error', function(data){
-		console.log('runtime error');
+		codeStatus.style = 'background:yellow;';
     });
-
     socket.on('compiled', function(data){
-		console.log('compiled');
+		codeStatus.style = 'background:green;';
     });
 
 })(localStorage || {}, io, CodeMirror, Vision, Top, Instructions);
