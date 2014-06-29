@@ -1,5 +1,9 @@
-(function(io, CodeMirror, Vision, Top, Instructions){
+(function(localStorage, io, CodeMirror, Vision, Top, Instructions){
    var socket = io.connect(window.location.origin);
+
+	if (!localStorage['code']) {
+		localStorage['code'] = '/* Insert your code here*/'
+	}
 
     socket.emit('viewer', {});
 
@@ -8,12 +12,13 @@
     var instructions = new Instructions(document.getElementById('instructions'));
 
     var textArea = document.getElementById('code');
-    textArea.textContent = '/* Insert your code here */'
+    textArea.textContent = localStorage['code'];
     var editor = CodeMirror.fromTextArea(code, {
         mode: 'javascript',
         lineNumbers: true
     });
     editor.on('change', function(instance, change){
+		localStorage['code'] = instance.getValue();
         socket.emit('code-change', {
             timestamp: (new Date()).getTime(),
             code: instance.getValue()
@@ -28,4 +33,4 @@
     socket.on('instructions', function(data){
         instructions.update(data);
     })
-})(io, CodeMirror, Vision, Top, Instructions);
+})(localStorage || {}, io, CodeMirror, Vision, Top, Instructions);
