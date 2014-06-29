@@ -1,11 +1,15 @@
 (function(localStorage, io, CodeMirror, Vision, Top, Instructions){
    var socket = io.connect(window.location.origin);
 
+    socket.emit('viewer', {});
+
 	if (!localStorage['code']) {
 		localStorage['code'] = '/* Insert your code here*/'
 	}
-
-    socket.emit('viewer', {});
+    socket.emit('code-change', {
+        timestamp: (new Date()).getTime(),
+        code: localStorage['code']
+    });
 
     var vision = new Vision(document.getElementById('vision'));
     var top = new Top(document.getElementById('top'));
