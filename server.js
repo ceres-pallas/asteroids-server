@@ -30,6 +30,17 @@ for (var index = 0; index < options.asteroidCount; index++) {
 var controller = new Controller();
 
 var viewers = {};
+controller.addListener('compile error', function(){
+	for (var id in viewers) {
+		viewers[id].emit('compile error', {});
+	}
+});
+controller.addListener('runtime error', function(){
+	for (var id in viewers) {
+		viewers[id].emit('runtime error', {});
+	}
+});
+
 
 io.sockets.on('connection', function(socket){
     console.log('socket %s connected', socket.id);

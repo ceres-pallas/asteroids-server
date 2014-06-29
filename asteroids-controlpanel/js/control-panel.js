@@ -32,5 +32,14 @@
 
     socket.on('instructions', function(data){
         instructions.update(data);
-    })
+    });
+
+    socket.on('compile error', function(data){
+		console.log('compile error');
+    });
+
+    socket.on('runtime error', function(data){
+		console.log('runtime error');
+    });
+
 })(localStorage || {}, io, CodeMirror, Vision, Top, Instructions);
