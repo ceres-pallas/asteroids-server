@@ -17,6 +17,7 @@ var Game = require('asteroids-game');
 var Asteroids = require('asteroids-asteroid');
 var Fighter = require('asteroids-fighter');
 var Controller = require('asteroids-controller');
+var Logger = require('./node_modules/asteroids-controller/lib/logger.js');
 
 var scenario = path.join(__dirname, 'scenarios', process.argv[2] || 'intro');
 
@@ -65,11 +66,15 @@ io.sockets.on('connection', function(socket){
 
 var time = 0;
 setInterval(function(){
+	var logger = new Logger();
     game.tick();
     var state = game.state();
-	controller.control(fighter, context, time++, fighter.state(), state.asteroids);
+	controller.control(fighter, logger, context, time++, fighter.state(), state.asteroids);
     for (var id in viewers) {
-        viewers[id].emit('game-state', state)
+        viewers[id].emit('game-state', state);
+		logger.lines().forEach(function(line){
+			viewers[id].emit('log', line);
+		})
     }
 	if (options.repeating && state.asteroids.length === 0) {
 		intializeGame();

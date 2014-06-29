@@ -49,4 +49,8 @@
 		codeStatus.style.background = 'green';
     });
 
+	socket.on('log', function(data){
+		console.log.apply(console, data);
+	});
+
 })(localStorage || {}, io, CodeMirror, Vision, Top, Instructions);
