@@ -3,6 +3,7 @@ var height = 720;
 var initializedAsteroids = 0;
 
 module.exports = {
+	repeating: false,
     width: width,
     height: height,
     bullet: {
@@ -17,7 +18,7 @@ module.exports = {
         fighter.orientation(Math.PI/2);
     },
     asteroidInitializer: function(asteroid){
-        
+
 	asteroid.position({ 'x': initializedAsteroids?width/6:width*5/6, 'y': 0.8*height });
         asteroid.radius(10);
         asteroid.velocity({ 'speed': 0, 'heading': Math.round(Math.random())*Math.PI, 'omega': Math.PI/100 });
