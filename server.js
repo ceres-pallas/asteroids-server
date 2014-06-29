@@ -22,8 +22,9 @@ var scenario = path.join(__dirname, 'scenarios', process.argv[2] || 'intro');
 
 var options = require(scenario);
 var game = new Game(options);
-var fighter = new Fighter(options.fighterInitializer);
+var fighter = new Fighter();
 game.addFighter(fighter);
+options.fighterInitializer(fighter);
 for (var index = 0; index < options.asteroidCount; index++) {
     game.addAsteroid();
 }
