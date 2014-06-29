@@ -2,7 +2,7 @@ var width = 720;
 var height = 720;
 
 module.exports = {
-	repeating: true,
+	repeating: false,
     width: width,
     height: height,
     bullet: {
