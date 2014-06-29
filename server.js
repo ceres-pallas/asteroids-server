@@ -24,10 +24,13 @@ var options = require(scenario);
 var game = new Game(options);
 var fighter = new Fighter();
 game.addFighter(fighter);
-options.fighterInitializer(fighter);
-for (var index = 0; index < options.asteroidCount; index++) {
-    game.addAsteroid();
+var intializeGame = function(){
+	options.fighterInitializer(fighter);
+	for (var index = 0; index < options.asteroidCount; index++) {
+		game.addAsteroid();
+	}
 }
+intializeGame();
 var controller = new Controller();
 
 var viewers = {};
