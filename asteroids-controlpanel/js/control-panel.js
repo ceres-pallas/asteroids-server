@@ -42,4 +42,8 @@
 		console.log('runtime error');
     });
 
+    socket.on('compiled', function(data){
+		console.log('compiled');
+    });
+
 })(localStorage || {}, io, CodeMirror, Vision, Top, Instructions);
