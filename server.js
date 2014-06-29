@@ -16,6 +16,7 @@ console.log('Asteroids server started listening on port ' + app.get('port'));
 var Game = require('asteroids-game');
 var Asteroids = require('asteroids-asteroid');
 var Fighter = require('asteroids-fighter');
+var Controller = require('asteroids-controller');
 
 var scenario = path.join(__dirname, 'scenarios', process.argv[2] || 'intro');
 
@@ -26,6 +27,7 @@ game.addFighter(fighter);
 for (var index = 0; index < options.asteroidCount; index++) {
     game.addAsteroid();
 }
+var controller = new Controller();
 
 var viewers = {};
 
@@ -40,6 +42,7 @@ io.sockets.on('connection', function(socket){
 
 	socket.on('code-change', function(data){
 	console.log(data);
+		controller.update(data.code);
 	});
 
     socket.on('disconnect', function(){
@@ -48,9 +51,11 @@ io.sockets.on('connection', function(socket){
     });
 });
 
+var time = 0;
 setInterval(function(){
     game.tick();
     var state = game.state();
+	controller.control(fighter, time++, fighter.state(), state.asteroids);
     for (var id in viewers) {
         viewers[id].emit('game-state', state)
     }
