@@ -15,6 +15,7 @@ module.exports = {
         fighter.radius(10);
         fighter.velocity({ 'speed': '0.5', 'heading': Math.PI/12 });
         fighter.orientation(Math.PI/12);
+		fighter.omega(0);
     },
     asteroidInitializer: function(asteroid){
         asteroid.position({ 'x': width * Math.random(), 'y': height * Math.random() });
