@@ -1,5 +1,5 @@
 (function($){
-    var debug = true;
+    var debug = false;
 
     var alpha = 9 * Math.PI / 12;
     var mx = Math.cos(alpha);
