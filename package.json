@@ -23,10 +23,10 @@
     "nodemon": "~0.7.10"
   },
   "dependencies": {
-    "asteroids-asteroid": "0.6.0",
-    "asteroids-controller": "0.0.0",
-    "asteroids-fighter": "^0.6.0",
-    "asteroids-game": "0.7.0",
+    "asteroids-asteroid": "0.7.0",
+    "asteroids-controller": "0.2.0",
+    "asteroids-fighter": "^0.7.0",
+    "asteroids-game": "0.8.0",
     "express": "~3.4.4",
     "socket.io": "~0.9.16"
   }
