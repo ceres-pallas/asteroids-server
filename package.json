@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "asteroids-asteroid": "0.7.0",
-    "asteroids-controller": "0.1.0",
+    "asteroids-controller": "0.2.0",
     "asteroids-fighter": "^0.7.0",
     "asteroids-game": "0.8.0",
     "express": "~3.4.4",
