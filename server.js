@@ -31,6 +31,7 @@ var intializeGame = function(){
 	}
 }
 intializeGame();
+var context = {};
 var controller = new Controller();
 
 var viewers = {};
@@ -66,7 +67,7 @@ var time = 0;
 setInterval(function(){
     game.tick();
     var state = game.state();
-	controller.control(fighter, time++, fighter.state(), state.asteroids);
+	controller.control(fighter, context, time++, fighter.state(), state.asteroids);
     for (var id in viewers) {
         viewers[id].emit('game-state', state)
     }
