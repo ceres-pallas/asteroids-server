@@ -69,7 +69,7 @@ setInterval(function(){
 	var logger = new Logger();
     game.tick();
     var state = game.state();
-	controller.control(fighter, logger, context, time++, fighter.state(), state.asteroids);
+	controller.control(fighter, logger, context, time++, fighter.state(), state.asteroids, state.bullets);
     for (var id in viewers) {
         viewers[id].emit('game-state', state);
 		logger.lines().forEach(function(line){
