@@ -56,6 +56,13 @@
                 arc(0, 0, fighter.radius, 0, 2 * Math.PI);
                 closePath();
                 stroke();
+                beginPath();
+                moveTo(0,0);
+                lineTo(
+                    2 * fighter.radius * Math.cos(fighter.heading),
+                    2 * fighter.radius * Math.sin(fighter.heading)
+                )
+                stroke();
             }
             this.context.restore();
         }
@@ -105,7 +112,7 @@
             translate(bullet.x, bullet.y);
             beginPath();
             arc(0, 0, bullet.radius, 0, 2 * Math.PI);
-			fill();
+            fill();
             closePath();
             this.context.restore();
         }
