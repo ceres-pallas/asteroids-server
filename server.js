@@ -48,18 +48,18 @@ io.sockets.on('connection', function(socket){
 	console.log('socket %s connected', socket.id);
 
 	socket.on('viewer', function(){
-	console.log('socket %s is a viewer', socket.id);
+		console.log('socket %s is a viewer', socket.id);
 		viewers[socket.id] = socket;
 		socket.emit('instructions', options.mission.instructions)
 	});
 
 	socket.on('code-change', function(data){
-	console.log(data);
+		console.log(data);
 		controller.update(data.code);
 	});
 
 	socket.on('disconnect', function(){
-	console.log('socket %s left the game', socket.id);
+		console.log('socket %s left the game', socket.id);
 		delete viewers[socket.id];
 	});
 });
