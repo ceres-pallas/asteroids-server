@@ -13,70 +13,27 @@ app.get('/', function(request, response){
 server.listen(app.get('port'));
 console.log('Asteroids server started listening on port ' + app.get('port'));
 
-var Game = require('asteroids-game');
-var Asteroids = require('asteroids-asteroid');
-var Fighter = require('asteroids-fighter');
-var Controller = require('asteroids-controller');
-var Logger = require('./node_modules/asteroids-controller/lib/logger.js');
-
-var scenario = path.join(__dirname, 'scenarios', process.argv[2] || 'intro');
-
-var options = require(scenario);
-var game = new Game(options);
-var fighter = new Fighter();
-game.addFighter(fighter);
-var initializeGame = function(){
-	options.fighterInitializer(fighter);
-	for (var index = 0; index < options.asteroidCount; index++) {
-		game.addAsteroid();
-	}
-}
-initializeGame();
-var context = {};
-var controller = new Controller();
-
-var viewers = {};
-['compile error', 'runtime error', 'compiled'].forEach(function(event){
-	controller.addListener(event, function(){
-		for (var id in viewers) {
-			viewers[id].emit(event, {});
-		}
-	});
-});
+var ServerState = require('./lib/server-state');
+var state = new ServerState(process.argv[2] || 'intro');
+state.initialize();
 
 io.sockets.on('connection', function(socket){
 	console.log('socket %s connected', socket.id);
 
 	socket.on('viewer', function(){
 		console.log('socket %s is a viewer', socket.id);
-		viewers[socket.id] = socket;
-		socket.emit('instructions', options.mission.instructions)
+		state.addViewer(socket);
 	});
 
 	socket.on('code-change', function(data){
 		console.log(data);
-		controller.update(data.code);
+		state.update(data);
 	});
 
 	socket.on('disconnect', function(){
 		console.log('socket %s left the game', socket.id);
-		delete viewers[socket.id];
+		state.removeViewer(socket);
 	});
 });
 
-var time = 0;
-setInterval(function(){
-	var logger = new Logger();
-	game.tick();
-	var state = game.state();
-	controller.control(fighter, logger, context, time++, fighter.state(), state.asteroids, state.bullets);
-	for (var id in viewers) {
-		viewers[id].emit('game-state', state);
-		logger.lines().forEach(function(line){
-			viewers[id].emit('log', line);
-		})
-	}
-	if (options.repeating && state.asteroids.length === 0) {
-		initializeGame();
-	}
-}, 1000/60);
+setInterval(state.tick.bind(state), 1000/60);
