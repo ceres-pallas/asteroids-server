@@ -7,7 +7,7 @@ var io = require('socket.io').listen(server);
 app.set('port', process.env.PORT || 3435);
 app.use('/controlpanel', express.static(__dirname + '/asteroids-controlpanel'));
 app.get('/', function(request, response){
-    response.redirect('/controlpanel/');
+	response.redirect('/controlpanel/');
 });
 
 server.listen(app.get('port'));
@@ -45,37 +45,37 @@ var viewers = {};
 });
 
 io.sockets.on('connection', function(socket){
-    console.log('socket %s connected', socket.id);
+	console.log('socket %s connected', socket.id);
 
-    socket.on('viewer', function(){
-    console.log('socket %s is a viewer', socket.id);
-        viewers[socket.id] = socket;
-        socket.emit('instructions', options.mission.instructions)
-    });
+	socket.on('viewer', function(){
+	console.log('socket %s is a viewer', socket.id);
+		viewers[socket.id] = socket;
+		socket.emit('instructions', options.mission.instructions)
+	});
 
 	socket.on('code-change', function(data){
 	console.log(data);
 		controller.update(data.code);
 	});
 
-    socket.on('disconnect', function(){
-    console.log('socket %s left the game', socket.id);
-        delete viewers[socket.id];
-    });
+	socket.on('disconnect', function(){
+	console.log('socket %s left the game', socket.id);
+		delete viewers[socket.id];
+	});
 });
 
 var time = 0;
 setInterval(function(){
 	var logger = new Logger();
-    game.tick();
-    var state = game.state();
+	game.tick();
+	var state = game.state();
 	controller.control(fighter, logger, context, time++, fighter.state(), state.asteroids, state.bullets);
-    for (var id in viewers) {
-        viewers[id].emit('game-state', state);
+	for (var id in viewers) {
+		viewers[id].emit('game-state', state);
 		logger.lines().forEach(function(line){
 			viewers[id].emit('log', line);
 		})
-    }
+	}
 	if (options.repeating && state.asteroids.length === 0) {
 		initializeGame();
 	}
