@@ -25,13 +25,13 @@ var options = require(scenario);
 var game = new Game(options);
 var fighter = new Fighter();
 game.addFighter(fighter);
-var intializeGame = function(){
+var initializeGame = function(){
 	options.fighterInitializer(fighter);
 	for (var index = 0; index < options.asteroidCount; index++) {
 		game.addAsteroid();
 	}
 }
-intializeGame();
+initializeGame();
 var context = {};
 var controller = new Controller();
 
@@ -77,6 +77,6 @@ setInterval(function(){
 		})
     }
 	if (options.repeating && state.asteroids.length === 0) {
-		intializeGame();
+		initializeGame();
 	}
 }, 1000/60);
